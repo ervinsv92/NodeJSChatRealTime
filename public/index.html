@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat Tiempo real</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    
+</head>
+<body onbeforeunload="return cerrarSesion()">
+    <div id="contanedor">
+        <h1>Chat en tiempo real</h1>
+        <label id="lblNombreUsuario">Nombre de Usuario:</label>
+        <p></p>
+        <div></div>
+        <form action="" id="form">
+            <input type="text" id="txtMensaje" />
+            <button>Enviar</button>
+        </form>
+        <p></p>
+        <div id="contenedorChat">
+            <div id="chat">
+                <ul id="ulMensajes">
+                </ul>
+            </div>
+    
+            <div id="usuarios">
+                <h4>Usuarios conectados</h4>
+                <ul id="ulUsuarios">
+                </ul>
+            </div>
+        </div>
+        
+    </div></div>
+
+    <script src="js.js"></script>
+</body>
+</html>

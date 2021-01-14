@@ -1,0 +1,44 @@
+#contanedor{
+    width: 80%;
+    height: 30%;
+    margin: 0 auto 0 auto;
+}
+
+#ulMensajes li{
+    list-style: none;
+    text-align: left;
+}
+
+#ulMensajes{
+    /*margin: 5px;*/
+    max-height: 400px;
+    min-height: 400px;
+    overflow: auto;
+    padding-left: 0px;
+}
+
+#chat{
+    width: 70%;
+    position: relative;
+    float: left;
+    border: solid black 1px;
+}
+
+#usuarios{
+    width: 25%;
+    position: relative;
+    float: left;  
+    margin-left: 2px;
+    border: solid green 1px;  
+    max-height: 400px;
+    min-height: 400px;
+    overflow: auto;
+    padding-left: 5px;
+}
+
+#contenedorChat{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}

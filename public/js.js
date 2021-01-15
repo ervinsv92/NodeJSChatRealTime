@@ -7,10 +7,6 @@ var audioAlert = document.getElementById('audioAlert')
 var socket = io.connect('http://10.7.13.161:3000');
 var nombreUsuario = ""
 
-//console.log(txtMensaje)
-
-//ulMensajes.appendChild("<li>Chat Iniciado</li>")
-
 while (nombreUsuario.trim() == "") {
     nombreUsuario = prompt("Ingrese un nombre de usuario")
 
@@ -28,6 +24,7 @@ socket.on('mensaje', function(mensaje) {
     li.innerHTML = mensaje;
     ulMensajes.appendChild(li)
     audioAlert.play()
+    ulMensajes.scrollTop = ulMensajes.scrollHeight;
 });
 
 socket.on('inicioSesion', function(mensaje) {
@@ -57,6 +54,8 @@ socket.on('cerrarSesion', function(mensaje) {
 
 form.addEventListener("submit", function(e) {
     e.preventDefault()
+
+    if (txtMensaje.value.trim().length == 0) return;
 
     socket.emit("mensaje", new Date().toLocaleString("es-ES") + " - " + "<span style='color:blue;'>" + nombreUsuario + "</span>: " + txtMensaje.value);
     txtMensaje.value = ""

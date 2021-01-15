@@ -11,6 +11,7 @@
 body {
   font-family: "Nunito", sans-serif;
   /* overflow: hidden; */
+  height: 100vh;
 }
 
 .nav-container {
@@ -19,10 +20,10 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 15rem;
+  height: 12rem;
   padding: 0 10rem 0 10rem;
   background-color: var(--primary-color);
-  background-image: url("./assets/svg/Liquid-Cheese\ \(1\).svg");
+  background-image: url("./assets/svg/Liquid-Cheese.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -43,7 +44,7 @@ body {
 }
 
 .user-list {
-  width: auto;
+  width: max-content;
 }
 
 .user-list > li {
@@ -59,27 +60,30 @@ body {
 
 #contanedor {
   display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: center;
   position: relative;
   top: -8rem;
   margin: 0 auto;
   padding: 0.5rem;
   width: 100%;
-  height: 100%;
+  height: 95%;
   background-image: url("./assets/svg/Confetti-Doodles.svg");
   border-radius: 2rem;
 }
 
-#ulMensajes li {
+#ulMensajes > li {
   margin-left: 0.5rem;
   width: max-content;
   padding: 0.5rem;
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
   list-style: none;
   text-align: left;
   background-color: #e6e6e6;
-  border-radius: 1rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 3rem;
 }
 
 #ulMensajes {
@@ -91,9 +95,9 @@ body {
 }
 
 #chat {
-  /* border: red dashed 0.1rem; */
   padding-top: 1rem;
-  width: 50%;
+  min-width: 50%;
+  max-width: max-content;
   margin: 0 auto;
   box-shadow: -2px -1px 6px -1px rgba(0, 0, 0, 0.54);
   border-radius: 3rem;
@@ -130,13 +134,29 @@ body {
 .chat-title {
   margin: 1rem 0;
 }
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  margin-top: 2rem;
+}
+
 .input {
   display: inline-block;
-  width: 70%;
-  height: 0.5rem;
+  width: 35%;
+  height: 0.2rem;
   margin-left: 1rem;
-  font-size: rem;
-  padding: 1.5rem;
+  font-size: 1rem;
+  padding: 1rem;
   font-family: "Nunito", sans-serif;
   font-weight: 700;
   border-radius: 2.5rem;
@@ -147,4 +167,21 @@ body {
 input[type="text"] {
   background-color: #acc5dc;
   color: black;
+}
+.button {
+  width: 5%;
+  height: 10%;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+  border-radius: 25px;
+  background-color: #443d9d;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #221b88;
 }

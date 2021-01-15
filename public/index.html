@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat Tiempo real</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+    rel="stylesheet" />
     <link rel="stylesheet" href="css.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    
 </head>
+<header class="header">
+    <nav class="nav">
+        <ul class="nav-container">
+        <li class="nav-item mb-1">Colono Chat 📨</li>
+        <li class="nav-item user"><label id="lblNombreUsuario"></label></li>
+        </ul>
+    </nav>
+</header>
+
 <body onbeforeunload="return cerrarSesion()">
+    <div id="usuarios">
+                <h4 class="user-title">Usuarios conectados</h4>
+                <ul id="ulUsuarios" class="user-list">
+                </ul>
+            </div>
     <div id="contanedor">
-        <h1>Chat en tiempo real</h1>
-        <label id="lblNombreUsuario">Nombre de Usuario:</label>
         <p></p>
         <div></div>
-        <form action="" id="form">
-            <input type="text" id="txtMensaje" />
-            <button>Enviar</button>
-        </form>
         <p></p>
         <div id="contenedorChat">
+            <h3 class="chat-title">Chat</h3>
             <div id="chat">
                 <ul id="ulMensajes">
                 </ul>
             </div>
-    
-            <div id="usuarios">
-                <h4>Usuarios conectados</h4>
-                <ul id="ulUsuarios">
-                </ul>
-            </div>
         </div>
-        
-    </div></div>
+        <div class="form-container">
+            <form action="" id="form">
+        <input type="text" id="txtMensaje" class="input" />
+        <button>Enviar</button>
+    </form>
+
+        </div>
+    </div>
+    </div>
 
     <script src="js.js"></script>
 </body>
+
 </html>

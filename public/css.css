@@ -1,44 +1,150 @@
-#contanedor{
-    width: 80%;
-    height: 30%;
-    margin: 0 auto 0 auto;
+:root {
+  --primary-color: #5b61b9;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
-#ulMensajes li{
-    list-style: none;
-    text-align: left;
+body {
+  font-family: "Nunito", sans-serif;
+  /* overflow: hidden; */
 }
 
-#ulMensajes{
-    /*margin: 5px;*/
-    max-height: 400px;
-    min-height: 400px;
-    overflow: auto;
-    padding-left: 0px;
+.nav-container {
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 15rem;
+  padding: 0 10rem 0 10rem;
+  background-color: var(--primary-color);
+  background-image: url("./assets/svg/Liquid-Cheese\ \(1\).svg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-#chat{
-    width: 70%;
-    position: relative;
-    float: left;
-    border: solid black 1px;
+.nav-item {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: white;
 }
 
-#usuarios{
-    width: 25%;
-    position: relative;
-    float: left;  
-    margin-left: 2px;
-    border: solid green 1px;  
-    max-height: 400px;
-    min-height: 400px;
-    overflow: auto;
-    padding-left: 5px;
+.user {
+  font-size: 1.8rem;
+  text-transform: capitalize;
 }
 
-#contenedorChat{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
+.user-title {
+  text-transform: capitalize;
+}
+
+.user-list {
+  width: auto;
+}
+
+.user-list > li {
+  display: inline-block;
+  width: max-content;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  text-transform: capitalize;
+}
+
+#contanedor {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  top: -8rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/svg/Confetti-Doodles.svg");
+  border-radius: 2rem;
+}
+
+#ulMensajes li {
+  margin-left: 0.5rem;
+  width: max-content;
+  padding: 0.5rem;
+  list-style: none;
+  text-align: left;
+  background-color: #e6e6e6;
+  border-radius: 1rem;
+}
+
+#ulMensajes {
+  padding: 1rem;
+  max-height: 400px;
+  min-height: 400px;
+  overflow: auto;
+  padding-left: 0px;
+}
+
+#chat {
+  /* border: red dashed 0.1rem; */
+  padding-top: 1rem;
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: -2px -1px 6px -1px rgba(0, 0, 0, 0.54);
+  border-radius: 3rem;
+}
+
+#usuarios {
+  width: 15%;
+  position: relative;
+  top: -11rem;
+  margin: 0 auto;
+  margin: 0 auto;
+}
+
+.user-title {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.1rem;
+  text-align: center;
+  border-radius: 3rem;
+  background-color: white;
+}
+
+#contenedorChat {
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80%;
+  /* background-color: white; */
+}
+
+.chat-title {
+  margin: 1rem 0;
+}
+.input {
+  display: inline-block;
+  width: 70%;
+  height: 0.5rem;
+  margin-left: 1rem;
+  font-size: rem;
+  padding: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  border-radius: 2.5rem;
+  border: none;
+  outline: none;
+}
+
+input[type="text"] {
+  background-color: #acc5dc;
+  color: black;
 }

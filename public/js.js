@@ -1,70 +1,64 @@
 var form = document.getElementById("form");
-var txtMensaje = document.getElementById("txtMensaje");
-var ulMensajes = document.getElementById("ulMensajes");
-var ulUsuarios = document.getElementById("ulUsuarios");
-var lblNombreUsuario = document.getElementById("lblNombreUsuario");
-var socket = io.connect("localhost:3000");
-var nombreUsuario = "";
-
-// ulMensajes.appendChild("<li>Chat Iniciado</li>");
+var txtMensaje = document.getElementById("txtMensaje")
+var ulMensajes = document.getElementById('ulMensajes')
+var ulUsuarios = document.getElementById('ulUsuarios')
+var lblNombreUsuario = document.getElementById('lblNombreUsuario')
+var audioAlert = document.getElementById('audioAlert')
+var socket = io.connect('http://10.7.13.161:3000');
+var nombreUsuario = ""
 
 while (nombreUsuario.trim() == "") {
-  nombreUsuario = prompt("Ingrese un nombre de usuario");
+    nombreUsuario = prompt("Ingrese un nombre de usuario")
 
-  if (nombreUsuario.trim() == "") {
-    alert("Debe ingresar un nombre de usuario");
-  }
+    if (nombreUsuario.trim() == "") {
+        alert("Debe ingresar un nombre de usuario")
+    }
 }
 
 socket.emit("inicioSesion", nombreUsuario);
 
 lblNombreUsuario.textContent = nombreUsuario;
 
-socket.on("mensaje", function (mensaje) {
-  var li = document.createElement("li");
-  li.innerHTML = mensaje;
-  ulMensajes.appendChild(li);
-});
-
-socket.on("inicioSesion", function (mensaje) {
-  ulUsuarios.innerHTML = "";
-
-  var usuarios = JSON.parse(mensaje);
-
-  usuarios.forEach((usuario) => {
+socket.on('mensaje', function(mensaje) {
     var li = document.createElement("li");
-    li.innerHTML = usuario;
-    ulUsuarios.appendChild(li);
-  });
+    li.innerHTML = mensaje;
+    ulMensajes.appendChild(li)
+    audioAlert.play()
+    ulMensajes.scrollTop = ulMensajes.scrollHeight;
 });
 
-socket.on("cerrarSesion", function (mensaje) {
-  ulUsuarios.innerHTML = "";
+socket.on('inicioSesion', function(mensaje) {
 
-  var usuarios = JSON.parse(mensaje);
+    ulUsuarios.innerHTML = ""
 
-  usuarios.forEach((usuario) => {
-    var li = document.createElement("li");
-    li.innerHTML = usuario;
-    ulUsuarios.appendChild(li).autocapitalize;
-  });
+    var usuarios = JSON.parse(mensaje)
+
+    usuarios.forEach(usuario => {
+        var li = document.createElement("li");
+        li.innerHTML = usuario;
+        ulUsuarios.appendChild(li)
+    });
 });
 
-form.addEventListener(
-  "submit",
-  function (e) {
-    e.preventDefault();
+socket.on('cerrarSesion', function(mensaje) {
+    ulUsuarios.innerHTML = ""
 
-    socket.emit(
-      "mensaje",
-      new Date().toLocaleString("es-ES") +
-        " - " +
-        "<span style='color:blue;'>" +
-        nombreUsuario +
-        "</span>: " +
-        txtMensaje.value
-    );
-    txtMensaje.value = "";
+    var usuarios = JSON.parse(mensaje)
+
+    usuarios.forEach(usuario => {
+        var li = document.createElement("li");
+        li.innerHTML = usuario;
+        ulUsuarios.appendChild(li)
+    });
+});
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault()
+
+    if (txtMensaje.value.trim().length == 0) return;
+
+    socket.emit("mensaje", new Date().toLocaleString("es-ES") + " - " + "<span style='color:blue;'>" + nombreUsuario + "</span>: " + txtMensaje.value);
+    txtMensaje.value = ""
 
     return false;
   },
@@ -72,5 +66,5 @@ form.addEventListener(
 );
 
 function cerrarSesion() {
-  socket.emit("cerrarSesion", nombreUsuario);
+    socket.emit("cerrarSesion", nombreUsuario);
 }

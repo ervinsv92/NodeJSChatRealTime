@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <title>Chat Tiempo real</title>
     <link rel="stylesheet" href="css.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    
+
 </head>
+
 <body onbeforeunload="return cerrarSesion()">
     <div id="contanedor">
         <h1>Chat en tiempo real</h1>
@@ -25,16 +27,21 @@
                 <ul id="ulMensajes">
                 </ul>
             </div>
-    
+
             <div id="usuarios">
                 <h4>Usuarios conectados</h4>
                 <ul id="ulUsuarios">
                 </ul>
             </div>
         </div>
-        
-    </div></div>
 
+    </div>
+    </div>
+
+    <audio id="audioAlert" style="display: none;">
+        <source src="alert.mp3" type="audio/mpeg">
+    </audio>
     <script src="js.js"></script>
 </body>
+
 </html>

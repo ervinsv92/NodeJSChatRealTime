@@ -4,7 +4,7 @@ var ulMensajes = document.getElementById("ulMensajes");
 var ulUsuarios = document.getElementById("ulUsuarios");
 var lblNombreUsuario = document.getElementById("lblNombreUsuario");
 var audioAlert = document.getElementById("audioAlert");
-var socket = io.connect("localhost:3000");
+var socket = io.connect("10.7.13.169:3000");
 var nombreUsuario = "";
 
 while (nombreUsuario.trim() == "") {
@@ -21,6 +21,9 @@ lblNombreUsuario.textContent = nombreUsuario;
 
 socket.on("mensaje", function (mensaje) {
   var li = document.createElement("li");
+  if (mensaje.usuario === nombreUsuario) {
+    li.classList.add("message-right");
+  }
   li.innerHTML = mensaje.mensaje;
   ulMensajes.appendChild(li);
   audioAlert.play();
@@ -60,14 +63,13 @@ form.addEventListener(
     let today = new Date();
 
     let mensaje = {
-      mensaje: `${today.getHours()}:${ today.getMinutes()} <span style='color:blue;'>${nombreUsuario}</span>: ${txtMensaje.value}`,
-      usuario:nombreUsuario
-    }
+      mensaje: `${today.getHours()}:${today.getMinutes()} <span style='color:blue;'>${nombreUsuario}</span>: ${
+        txtMensaje.value
+      }`,
+      usuario: nombreUsuario,
+    };
 
-    socket.emit(
-      "mensaje",
-      mensaje
-    );
+    socket.emit("mensaje", mensaje);
     txtMensaje.value = "";
 
     return false;

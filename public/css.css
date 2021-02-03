@@ -58,6 +58,11 @@ body {
   text-transform: capitalize;
 }
 
+.message-right {
+  position: absolute;
+  right: 30rem;
+}
+
 #contanedor {
   display: flex;
   justify-content: center;

@@ -21,7 +21,7 @@ lblNombreUsuario.textContent = nombreUsuario;
 
 socket.on("mensaje", function (mensaje) {
   var li = document.createElement("li");
-  li.innerHTML = mensaje;
+  li.innerHTML = mensaje.mensaje;
   ulMensajes.appendChild(li);
   audioAlert.play();
   ulMensajes.scrollTop = ulMensajes.scrollHeight;
@@ -58,16 +58,15 @@ form.addEventListener(
 
     if (txtMensaje.value.trim().length == 0) return;
     let today = new Date();
+
+    let mensaje = {
+      mensaje: `${today.getHours()}:${ today.getMinutes()} <span style='color:blue;'>${nombreUsuario}</span>: ${txtMensaje.value}`,
+      usuario:nombreUsuario
+    }
+
     socket.emit(
       "mensaje",
-      today.getHours() +
-        ":" +
-        today.getMinutes() +
-        " " +
-        "<span style='color:blue;'>" +
-        nombreUsuario +
-        "</span>: " +
-        txtMensaje.value
+      mensaje
     );
     txtMensaje.value = "";
 

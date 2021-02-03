@@ -18,7 +18,6 @@ server.listen(port, function () {
 });
 
 io.on("connection", function (socket) {
-  console.log("socket");
   socket.on("inicioSesion", function (mensaje) {
     usuariosConectados.push(mensaje);
     io.emit("inicioSesion", JSON.stringify(usuariosConectados));
